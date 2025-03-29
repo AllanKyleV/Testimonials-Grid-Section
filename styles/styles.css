@@ -1,15 +1,15 @@
 /* Font-styles */
 
 @font-face {
-    font-family: 'Barlow Semi Condensed';
-    src: url(/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Regular.ttf) format('ttf');
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    src: url(/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Regular.ttf) format('truetype');
     font-style: normal;
     font-weight: 500;
 }
 
 @font-face {
-    font-family: 'Barlow Semi Condensed';
-    src: url(/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-SemiBold.ttf) format('ttf');
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    src: url(/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-SemiBold.ttf) format('truetype');
     font-style: normal;
     font-weight: 600;
 }
@@ -28,7 +28,9 @@
     --neutral-darkblue: hsl(219, 29%, 14%);
     --neutral-black: hsl(0, 0%, 7%);
 
-    --font-size-body: 13px;
+    --font-size-body: clamp(0.75rem, 1vw, 0.8125rem);
+    --font-size-small: clamp(0.6875rem, 0.9vw, 0.75rem);
+    --font-size-highlight: clamp(1.125rem, 2vw, 1.2rem); 
     --font-weight-regular: 500;
     --font-weight-semibold: 600;
 }
@@ -50,6 +52,7 @@ main {
     place-items: center;
     gap: 2rem;
     margin: 5rem 0;
+    padding: 0.7rem;
 }
 
 article {
@@ -85,7 +88,7 @@ article header h2 {
 article header .status {
     grid-column: 2;
     grid-row: 2;
-    font-size: calc(var(--font-size-body) - 2px);
+    font-size: var(--font-size-small);
     font-weight: 500;
     color: var(--neutral-grey-200);
 }
@@ -106,11 +109,13 @@ article blockquote .highlight {
     color: var(--neutral-white);
     font-size: 1.3rem;
     line-height: 1.3;
+    font-size: var(--font-size-highlight);
 }
 
 article blockquote p {
     color: var(--neutral-grey-200);
     line-height: 1.4;
+    font-size: var(--font-size-body);
 }
 
 /* Card colors */
@@ -154,4 +159,44 @@ main article:nth-child(5) p {
 
 main article:nth-child(4) {
     background-color: var(--neutral-darkblue);
+}
+
+/* Media Query | Laptops */
+@media (min-width: 64em) {
+    main {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 1.8rem;
+        max-width: 1100px;
+        margin: 8rem auto;
+    }
+
+    article {
+        max-width: fit-content;
+        height: 100%;
+        padding: 2rem;
+    }
+
+    main article:nth-child(1) {
+        grid-column: 1/3;
+    }
+
+    main article:nth-child(2) {
+        grid-column: 3;
+    }
+
+    main article:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    main article:nth-child(4) {
+        grid-column: 2/4;
+        grid-row: 2;
+    }
+
+    main article:nth-child(5) {
+        grid-column: 4;
+        grid-row: 1/3;
+    }
 }
