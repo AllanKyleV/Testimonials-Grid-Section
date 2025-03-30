@@ -47,6 +47,10 @@ body {
     font-size: var(--font-size-body);
 }
 
+h1 {
+    display: none;
+}
+
 main {
     display: grid;
     place-items: center;
