@@ -47,10 +47,6 @@ body {
     font-size: var(--font-size-body);
 }
 
-h1 {
-    display: none;
-}
-
 main {
     display: grid;
     place-items: center;
@@ -82,7 +78,7 @@ article header img {
     place-self: center;
 }
 
-article header h2 {
+article header h1 {
     grid-column: 2;
     grid-row: 1;
     font-size: var(--font-size-body);
